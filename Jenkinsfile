@@ -1,13 +1,13 @@
 pipeline {
     agent any
+    tools {
+        nodejs 'NodeJS23.2.0'  // Make sure NodeJS is installed and configured in Jenkins tools
+    }
     stages {
-        stage('Check Node and NPM Versions') {
+        stage('Installing Dependencies') {
             steps {
-                script {
-                    // Runs commands to check node and npm versions
-                    sh 'node -v'
-                    sh 'npm -v'
-                }
+                // Install dependencies using npm
+                sh 'npm install --no-audit'
             }
         }
     }
