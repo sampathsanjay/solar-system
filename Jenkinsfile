@@ -10,6 +10,12 @@ pipeline {
                 sh 'npm install --no-audit'
             }
         }
+        stage('NPM Dependency Audit') {
+            steps {
+                // Run npm audit for critical vulnerabilities
+                sh 'npm audit --audit-level=critical'
+            }
+        }
     }
 }
 
